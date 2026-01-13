@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>TCMS.Optimizer</RootNamespace>
+    <AssemblyName>TCMS_Optimizer</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Embed default scripts as resources -->
+    <None Update="Resources\scripts\fps_boost.ps1">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <Visible>false</Visible>
+    </None>
+    <None Update="Resources\scripts\latency_boost.ps1">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <Visible>false</Visible>
+    </None>
+    <None Update="Resources\scripts\restore_defaults.ps1">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Pack>True</Pack>
+      <Visible>false</Visible>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The Updater helper will be embedded as an embedded resource.
+         Build the Updater project and copy Updater.exe to Tools\embedded\Updater.exe before building/publishing main project.
+         LogicalName is set so UpdateManager.ExtractEmbeddedUpdater() will find it by name. -->
+    <EmbeddedResource Include="Tools\embedded\Updater.exe">
+      <LogicalName>TCMS.Updater.exe</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
