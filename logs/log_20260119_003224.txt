@@ -1,0 +1,4 @@
+﻿2026-01-19 00:32:24 - Logger initialized.
+2026-01-19 00:32:24 - Loaded language: en
+2026-01-19 00:32:24 - Loaded language: en
+2026-01-19 00:32:24 - WinOptPro started.
